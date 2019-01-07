@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <mate name="author" content="dizhu">
+        <title>Rotate Lucks</title>
+        <style>
+            .a {
+                background: url(转盘.jpg) no-repeat;
+                position: absolute;
+                width: 1000px;
+                height: 1000px;
+                top: 60px;
+                left: 116px;
+                z-index: 5;
+            }
+
+            .b {
+                background: url(抽奖.png) no-repeat;
+                position: absolute;
+                top: 215px;
+                z-index: 10;
+                left: 370px;
+                vertical-align: left;
+            }
+
+            .c {
+                background: url(选择.png) no-repeat;
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                top: 60px;
+                z-index: 5;
+                left: 116px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="c">
+        </div>
+    </div>
+    <div class="b" id="container">
+        <img src="抽奖.png" id="demo" cursor:pointer>
+    </div>
+
+    <script>
+        var timer = null;
+        var deg = 0;
+        var flag = false;
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var btn = document.getElementById('demo');
+            btn.onclick = function () {
+                rotate();
+                if(flag){
+                    clearInterval(timer);
+                }
+            }
+        };
+        function rotate() {
+            var random = 0;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                deg += 51.4;
+                document.getElementById("container").style.transform = "rotate(" + deg + "deg)";
+                if(deg>500){
+                    flag = true;
+                }
+            })
+        };
+    </script>
+</body>
+
+</html>
